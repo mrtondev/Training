@@ -25,16 +25,6 @@ a:visited{
 }
 
 
-.linguagens{
-    padding-top: 30%;
-    display: inline-flex;
-    font-family: Bebas Neue;
-}
-
-.linguagens p{
-
-}
-
 .wall img{
     position: absolute;
 }
@@ -53,7 +43,12 @@ a:visited{
     padding-left: 60%;
 }
 
-
+.linguagens{
+    padding-top: 30%;
+    display: inline-flex;
+    font-family: Bebas Neue;
+    
+}
 
 .js img{  
   width: 120px;
