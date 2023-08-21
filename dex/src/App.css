@@ -1,0 +1,61 @@
+.App-header{
+  width: 100%;
+  height: 17vh;
+  background-color: #f3f3f3;
+}
+
+.bg{
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-image: url(./bg.png);
+  background-repeat: repeat;
+  background-size: 25%;
+  background-position: 30%;
+}
+
+
+.app-dex{
+  height: 100rem;
+  width: 80%;
+  align-items: center;
+  background-color: #f3f3f3;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+
+}
+
+.bg-dex{
+  height: 100rem;
+  width: 65vw;
+  background-image: url(./container_bg.png);
+  background-color: #fff;
+  background-repeat: repeat;
+  background-size: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
+
+.bg-dex h2{
+  color: #b9b9b9;
+  font-size: 1.8rem;
+}
+
+.sMenu{
+  width: 100%;
+  height: 20vh;
+  background-color: #353537;
+  z-index: 1;
+}
+
+.sMenu .dBar{
+  position: relative;
+  padding-top: 20%;
+  width: 100%;
+  height: 1vh;
+  background-color: #a9a7a7;
+  z-index: -1;
+}
