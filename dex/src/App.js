@@ -5,24 +5,19 @@ import './getInfoData';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <main className='main'>
+          <div className='container'>
+          
+             <div className='title'> <h2> Pokédex </h2></div>
+             <div className='searchBar'> <h2>Nome ou número</h2> <input type='text'></input>
+              <button> <img className='lupa' alt='pesquisa' src={require('./lupa.svg').default} /></button>
+              <div className='grayBar'></div>
+             </div>
+             <div className='pokedexBG'></div>
+          </div>
+      </main>
 
-      </header>
-      <div className='bg'>
-            <div className='bg-dex'>
-              <div className='sMenu'>
-                  <h2> Nome ou número</h2>
-                  <div className='dBar'></div>
-                     
-                    <div className='app-dex' >
-                    <h2> Pokédex</h2>
-                
-                
-                    </div>
-              </div>
-            </div>
-        </div>
-    </div>
+     </div>
   );
 }
 

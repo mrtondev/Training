@@ -1,61 +1,101 @@
-.App-header{
-  width: 100%;
-  height: 17vh;
-  background-color: #f3f3f3;
-}
-
-.bg{
-  width: 100%;
-  height: 100%;
-  display: block;
+.main{
   background-image: url(./bg.png);
-  background-repeat: repeat;
-  background-size: 25%;
-  background-position: 30%;
-}
-
-
-.app-dex{
-  height: 100rem;
-  width: 80%;
-  align-items: center;
-  background-color: #f3f3f3;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-
-}
-
-.bg-dex{
-  height: 100rem;
-  width: 65vw;
-  background-image: url(./container_bg.png);
-  background-color: #fff;
-  background-repeat: repeat;
+  background-repeat: repeat-y repeat-x;
   background-size: 30%;
-  margin-left: auto;
-  margin-right: auto;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
   
 }
 
-
-.bg-dex h2{
-  color: #b9b9b9;
-  font-size: 1.8rem;
-}
-
-.sMenu{
-  width: 100%;
-  height: 20vh;
-  background-color: #353537;
-  z-index: 1;
-}
-
-.sMenu .dBar{
+.container{
+  background-image: url(container_bg.png);
+  background-color:  #FFFAFA;
+  margin-left: auto;
+  margin-right: auto;
+  width: 65%;
+  height: 95vh;
   position: relative;
-  padding-top: 20%;
+}
+
+.title {
+  padding-left: 2rem;
+  width: 70%;
+  height: 10vh;
+  background-color: #FFFAFA;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title h2{
+  color:  #8a8989;
+  font-family: 'Nunito Sans', sans-serif;
+  padding-top: 2rem;
+  padding-left: 1rem;
+  font-size: 2rem;
+}
+
+.searchBar{
+  position: absolute;
   width: 100%;
-  height: 1vh;
-  background-color: #a9a7a7;
-  z-index: -1;
+  height: 25vh;
+  background-color: #272727;
+}
+
+.searchBar h2, input{
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  margin: auto;
+}
+
+.searchBar h2{
+  top: 4rem;
+  margin-left: 14rem;
+  font-family: 'Nunito Sans', sans-serif;
+  color: #FFFAFA;
+}
+
+.searchBar input{
+  position: absolute;
+  border: 3px solid  #8a8989;
+  border-radius: 3%;
+  margin-left: 14rem;
+  height: 2.8rem;
+  width: 15rem;
+}
+
+.searchBar button {
+  border: none;
+  border-radius: 5px;
+  background-color: #f77109;
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  top: 6rem;
+  left: 32rem;
+  
+}
+
+.lupa {
+  width: 28px;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  margin: auto;
+}
+
+.grayBar{
+  background-color: #636262;
+  width: 100%;
+  height: 5vh;
+  margin-top: 15vh;
+}
+
+.pokedexBG{
+  width: 70%;
+  height: 80vh;
+  background-color: #FFFAFA;
+  margin-left: auto;
+  margin-right: auto;
 }
