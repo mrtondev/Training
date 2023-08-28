@@ -51,8 +51,9 @@
 }
 
 .searchBar h2{
-  top: 4rem;
+  top: 2rem;
   margin-left: 14rem;
+  font-size: 2rem;
   font-family: 'Nunito Sans', sans-serif;
   color: #FFFAFA;
 }
