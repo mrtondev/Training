@@ -76,6 +76,7 @@
   height: 3rem;
   top: 6rem;
   left: 32rem;
+  cursor: pointer;
   
 }
 
@@ -101,7 +102,7 @@
 
 .pokedexBG{
   width: 70%;
-  height: 80vh;
+  /*height: 70vh;*/
   background-color: #FFFAFA;
   margin-left: auto;
   margin-right: auto;
