@@ -3,8 +3,8 @@ import './App.css';
 
 const App = () => {
   const [pName, setpName] = useState('');
-  const [namedata, setnameData] = useState('');
-  const [iddata, setiddata] = useState('');
+  const [namedata, setnameData] = useState(null);
+  const [iddata, setiddata] = useState(null);
   const [imageUrl, setImageUrl] = useState(null); // Estado para armazenar a URL da imagem
 
   const change = (event) => {
@@ -21,11 +21,12 @@ const App = () => {
       .then((response) => response.json())
       .then((data) => {
         // Manipular dados da API  
-        console.log(data);
+        // console.log(data);
 
         setnameData(data.name);
         setiddata(data.id);
-        setImageUrl(data['sprites']['other']['official-artwork']['front_default']); // Definir a URL da imagem
+        // Definir a URL da imagem
+        setImageUrl(data['sprites']['other']['official-artwork']['front_default']); 
       })
       .catch((error) => {
         // Manipular erros
@@ -49,8 +50,8 @@ const App = () => {
           <div className='pokedexBG'>
             <div className="CardPoke">
             {imageUrl && <img className="sPokeImg" src={imageUrl} alt="Imagem do Pokémon" />}
-              <div className="sPokeName"> <p> Nome: {namedata} </p></div>
-              <div className="sPokeNumber" > <p> ID: {iddata}</p></div>
+            {namedata &&  <div className="sPokeName"> <p> Nome: {namedata} </p></div> }
+            {iddata &&  <div className="sPokeNumber" > <p> ID: {iddata}</p></div> }
             </div>
           </div>
         </div>
