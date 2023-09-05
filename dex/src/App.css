@@ -109,15 +109,27 @@
 }
 
 .CardPoke{
-  display: block;
+  background-color: #DCDCDC;
+  border: 2px solid;
   margin-top: 5vh;
-  height: 300px;
-  width: 300px;
+  height: 350px;
+  width: 250px;
   font-size: 30px;
   color: #272727;
   font-family: inherit;
 }
 
 .CardPoke p{
-  text-align: initial;
+  text-align: center;
+  position: relative;
+}
+
+.sPokeNumber p{
+  margin-top: 20px;
+}
+
+.sPokeImg {
+  
+  height: 250px;
+  width: 250px;
 }
