@@ -9,7 +9,7 @@ const typeTranslations = {
   flying: 'Voador',
   fire: 'Fogo',
   bug: 'Inseto',
-  eletric: 'Elétrico',
+  electric: 'Elétrico',
   ice: 'Gelo',
   dark: 'Sombrio',
   rock: 'Pedra',
@@ -18,7 +18,7 @@ const typeTranslations = {
   poison: 'Venenoso',
   ghost: 'Fantasma',
   dragon: 'Dragão',
-  stell: 'Aço',
+  steel: 'Aço',
   grass: 'Planta',
   fairy: 'Fada',
 
@@ -81,9 +81,15 @@ const App = () => {
                 <p>{namedata && namedata.charAt(0).toUpperCase() + namedata.slice(1)}</p>
               </div>
               <div className="sPokeTypes">
-                {card.types.map((typeData) => (
-                  <span key={typeData.type.name} className="type">{typeTranslations[typeData.type.name]}</span>
-                ))}
+                {card.types ? (
+                  card.types.map((typeData) => (
+                    <span key={typeData.type.name} className="type">
+                      {typeTranslations[typeData.type.name]}
+                    </span>
+                  ))
+                ) : (
+                  <p>Nenhum tipo disponível</p>
+                )}
               </div>
             </div>}
           </div>
