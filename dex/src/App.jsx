@@ -2,12 +2,32 @@
 import React, {useState} from "react"
 import './App.css';
 import './getInfoData';
-import { pokemonData } from "./getInfoData";
 
- export const App =() => {
-
+ const App =() => {
+  
     const [pName, setpName] = useState()
+    
 
+  const change = (event) => {
+    setpName(event.target.value)
+  }
+
+  const baseurl = (event) => {
+    event.preventDefault()
+    const baseUrl = `https://pokeapi.co/api/v2/pokemon/${pName}`
+
+    fetch(baseUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      //manipular dados da api
+      console.log(data)
+    })
+
+    .catch((error) => {
+      //manipular erros
+      console.log(error)
+    })
+  }
   return (
     <div className="App">
       <main className='main'>
@@ -15,8 +35,9 @@ import { pokemonData } from "./getInfoData";
           
              <div className='title'> <h2> Pokédex </h2></div>
 
-                <div className='searchBar'> <h2>Nome ou número</h2> <input type='text' value={pName} onChange={(e) => setpName(e.target.value)}></input> 
-                <button onClick={pokemonData}> <img className='lupa' alt='pesquisa' src={require('./lupa.svg').default} /></button>
+                <div className='searchBar'> <h2>Nome ou número</h2>
+                <input type='text' value={pName} onChange={change.toString()}></input> 
+                <button onClick={baseurl}> <img className='lupa' alt='pesquisa' src={require('./lupa.svg').default} /></button>
                 </div>
               
               <div className='grayBar'></div>
