@@ -15,15 +15,14 @@ const typeTranslations = {
   dark: 'Sombrio',
   rock: 'Pedra',
   ground: 'Terrestre',
-  water: 'Aquático',
-  poison: 'Venenoso',
+  water: 'Água',
+  poison: 'Veneno',
   ghost: 'Fantasma',
   dragon: 'Dragão',
   steel: 'Aço',
   grass: 'Planta',
   fairy: 'Fada',
 
-  // Adicione os outros tipos conforme necessário
 };
 
 const App = () => {
@@ -51,7 +50,6 @@ const App = () => {
         setCard(data);
         setnameData(data.name);
         setiddata(data.id);
-        // Definir a URL da imagem
         setImageUrl(data['sprites']['other']['official-artwork']['front_default']);
 
       })
@@ -84,7 +82,10 @@ const App = () => {
               <div className="sPokeTypes">
                 {card.types ? (
                   card.types.map((typeData) => (
-                    <span key={typeData.type.name} className="type">
+                    <span
+                      key={typeData.type.name}
+                      className={`type type-${typeData.type.name}`}
+                    >
                       {typeTranslations[typeData.type.name]}
                     </span>
                   ))
