@@ -102,8 +102,22 @@
 
 .pokedexBG{
   width: 70%;
-  /*height: 70vh;*/
+  height: 60vh;
   background-color: #FFFAFA;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: auto; 
+}
+
+.CardPoke{
+  display: block;
+  margin-top: 5vh;
+  height: 300px;
+  width: 300px;
+  font-size: 30px;
+  color: #272727;
+  font-family: inherit;
+}
+
+.CardPoke p{
+  text-align: initial;
 }
