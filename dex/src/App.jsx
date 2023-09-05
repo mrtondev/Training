@@ -9,6 +9,7 @@ const typeTranslations = {
   flying: 'Voador',
   fire: 'Fogo',
   bug: 'Inseto',
+  psychic: 'Psíquico',
   electric: 'Elétrico',
   ice: 'Gelo',
   dark: 'Sombrio',
