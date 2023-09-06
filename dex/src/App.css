@@ -180,7 +180,7 @@
 
 .type-flying{
   color: black;
-  background:linear-gradient( #059cd8, #6e7274);
+  background:linear-gradient(to bottom, rgb(16, 161, 187) 0, rgb(49, 166, 212) 50%, rgb(113, 118, 121) 49%);
 }
 
 .type-water{
@@ -194,7 +194,7 @@
 }
 
 .type-ground{
-  background:linear-gradient(#cad805, #444546);
+  background:linear-gradient(to bottom,#cad805 0, #cad805 50%, #636466 49%);
 }
 
 .type-electric{
@@ -222,7 +222,7 @@
 
 .type-dragon{
   color: white;
-  background:linear-gradient(#059cd8, #d88304)
+  background:linear-gradient(to bottom, #059cd8 0, #059cd8 50%, #d88304 49%)
 }
 
 .type-ghost{
