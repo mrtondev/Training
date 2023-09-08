@@ -45,19 +45,39 @@ const App = () => {
     fetch(Url)
       .then((response) => response.json())
       .then((data) => {
-        // Manipular dados da API  
         console.log(data);
         setCard(data);
         setnameData(data.name);
         setiddata(data.id);
-        setImageUrl(data['sprites']['other']['official-artwork']['front_default']);
-
+        setImageUrl(data.sprites.other['official-artwork'].front_default);
       })
       .catch((error) => {
-        // Manipular erros
         console.log(error);
       });
   }
+
+  // Função para gerar um número aleatório entre 1 e 898 (ou o número total de Pokémon disponíveis)
+  const getRandomPokemonId = () => {
+    return Math.floor(Math.random() * 898) + 1;
+  };
+
+  // Função para buscar um Pokémon aleatório
+  const getRandomPokemon = () => {
+    const randomId = getRandomPokemonId();
+    const randomUrl = `https://pokeapi.co/api/v2/pokemon/${randomId}`;
+
+    fetch(randomUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        setCard(data);
+        setnameData(data.name);
+        setiddata(data.id);
+        setImageUrl(data.sprites.other['official-artwork'].front_default);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="App">
@@ -73,30 +93,34 @@ const App = () => {
           </div>
           <div className='grayBar'></div>
           <div className='pokedexBG'>
-            {card && <div className="CardPoke">
-              <img className="sPokeImg" src={imageUrl} alt="Imagem do Pokémon" />
-              <div className="sPokeNumber" > <p> N° {iddata}</p></div>
-              <div className="sPokeName" >
-                <p>{namedata && namedata.charAt(0).toUpperCase() + namedata.slice(1)}</p>
+          <button onClick={getRandomPokemon}>Surpreenda-me</button>
+            {card && (
+              <div className="CardPoke">
+                <img className="sPokeImg" src={imageUrl} alt="Imagem do Pokémon" />
+                <div className="sPokeNumber" > <p> N° {iddata}</p></div>
+                <div className="sPokeName" >
+                  <p>{namedata && namedata.charAt(0).toUpperCase() + namedata.slice(1)}</p>
+                </div>
+                <div className="sPokeTypes">
+                  {card.types ? (
+                    card.types.map((typeData) => (
+                      <span
+                        key={typeData.type.name}
+                        className={`type type-${typeData.type.name}`}
+                      >
+                        {typeTranslations[typeData.type.name]}
+                      </span>
+                    ))
+                  ) : (
+                    <p>Nenhum tipo disponível</p>
+                  )}
+                </div>
               </div>
-              <div className="sPokeTypes">
-                {card.types ? (
-                  card.types.map((typeData) => (
-                    <span
-                      key={typeData.type.name}
-                      className={`type type-${typeData.type.name}`}
-                    >
-                      {typeTranslations[typeData.type.name]}
-                    </span>
-                  ))
-                ) : (
-                  <p>Nenhum tipo disponível</p>
-                )}
-              </div>
-            </div>}
+            )}
           </div>
         </div>
       </main>
+      
     </div>
   );
 }
