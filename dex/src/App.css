@@ -99,6 +99,7 @@
   height: 5vh;
 }
 
+
 .pokedexBG{
   display: grid;
   width: 70%;
@@ -108,7 +109,24 @@
   margin-right: auto; 
 }
 
+.random{
+  margin-top: 5vh;
+  border: none;
+  border-radius: 5px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  text-align: center;
+  color: white;
+  height: 5vh;
+  background-color: #059cd8;
+  width: 18vw;
+}
 
+
+.random img{
+  padding-right: 5px;
+  height: 20px;
+}
 
 .CardPoke{
   margin-left: 5vh;

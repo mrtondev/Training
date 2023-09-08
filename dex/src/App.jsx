@@ -93,7 +93,7 @@ const App = () => {
           </div>
           <div className='grayBar'></div>
           <div className='pokedexBG'>
-          <button onClick={getRandomPokemon}>Surpreenda-me</button>
+          <button className="random" onClick={getRandomPokemon}> <img src={require('./refresh.png')} alt="" />Surpreenda-me!</button>
             {card && (
               <div className="CardPoke">
                 <img className="sPokeImg" src={imageUrl} alt="Imagem do Pokémon" />
