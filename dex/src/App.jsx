@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 import './App.css';
 import './index.css';
-
+import './Number';
+import { PokemonList } from "./Number";
 // Mapeamento de tipos em inglês para português
 const typeTranslations = {
   normal: 'Normal',
@@ -26,6 +27,8 @@ const typeTranslations = {
 };
 
 const App = () => {
+  
+
   const [card, setCard] = useState(null);
   const [pName, setpName] = useState('');
   const [namedata, setnameData] = useState(null);
@@ -93,9 +96,17 @@ const App = () => {
           </div>
           <div className='grayBar'></div>
           <div className='pokedexBG'>
+          <PokemonList
+              card={card}
+              namedata={namedata}
+              iddata={iddata}
+              imageUrl={imageUrl}
+            />
+
           <button className="random" onClick={getRandomPokemon}> <img src={require('./refresh.png')} alt="" />Surpreenda-me!</button>
             {card && (
-              <div className="CardPoke">
+              <div className="CardPoke"
+              >
                 <img className="sPokeImg" src={imageUrl} alt="Imagem do Pokémon" />
                 <div className="sPokeNumber" > <p> N° {iddata}</p></div>
                 <div className="sPokeName" >
