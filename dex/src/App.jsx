@@ -96,17 +96,19 @@ const App = () => {
           </div>
           <div className='grayBar'></div>
           <div className='pokedexBG'>
-          <PokemonList
+
+          <button className="random" onClick={getRandomPokemon}> <img src={require('./refresh.png')} alt="" />Surpreenda-me!</button>
+           <PokemonList
               card={card}
               namedata={namedata}
               iddata={iddata}
               imageUrl={imageUrl}
-            />
-
-          <button className="random" onClick={getRandomPokemon}> <img src={require('./refresh.png')} alt="" />Surpreenda-me!</button>
+              typeTranslations={typeTranslations} // Passe typeTranslations como prop
+          />
             {card && (
               <div className="CardPoke"
               >
+                  
                 <img className="sPokeImg" src={imageUrl} alt="Imagem do Pokémon" />
                 <div className="sPokeNumber" > <p> N° {iddata}</p></div>
                 <div className="sPokeName" >

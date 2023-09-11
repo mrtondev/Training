@@ -1,4 +1,29 @@
 import React, { useState, useEffect } from "react";
+import './App';
+import './Number.css';
+
+const typeTranslations = {
+  normal: 'Normal',
+  fighting: 'Lutador',
+  flying: 'Voador',
+  fire: 'Fogo',
+  bug: 'Inseto',
+  psychic: 'Psíquico',
+  electric: 'Elétrico',
+  ice: 'Gelo',
+  dark: 'Sombrio',
+  rock: 'Pedra',
+  ground: 'Terrestre',
+  water: 'Água',
+  poison: 'Veneno',
+  ghost: 'Fantasma',
+  dragon: 'Dragão',
+  steel: 'Aço',
+  grass: 'Planta',
+  fairy: 'Fada',
+
+};
+
 
 export const PokemonList = ({ onLoadPokemonClick }) => {
   const [pokemons, setPokemons] = useState([]);
@@ -37,8 +62,21 @@ export const PokemonList = ({ onLoadPokemonClick }) => {
         <div className="cardPoke">
           {pokemons.map((pokemon) => (
             <span key={pokemon.id}>
-              <h3>{pokemon.name}</h3>
-              <img src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} />
+              <img className="sPokeImg" src={(pokemon.sprites.other['official-artwork'].front_default)}  alt="Imagem do Pokémon"></img>
+              <p className="sPokeNumber">{pokemon.id}  </p>
+              <p className="PokeName"> {pokemon.name}</p>
+              <div className="sPoketypes">
+              {
+                pokemon.types.map((typeData)=> (
+                  <span
+                    key = {typeData.type.name}
+                    className={`type type-${typeData.type.name}`}
+                    >
+                      {typeTranslations[typeData.type.name]}
+                      </span>
+                ))
+              }
+              </div>
             </span>
           ))}
         </div>
