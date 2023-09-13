@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import './App';
-import './Number.css';
 
 const typeTranslations = {
   normal: 'Normal',
@@ -28,12 +27,13 @@ const typeTranslations = {
 export const PokemonList = ({ onLoadPokemonClick }) => {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [, setnameData] = useState(null);
 
   const getNumeric = () => {
     setLoading(true);
     const promises = [];
 
-    for (let i = 1; i <= 15; i++) {
+    for (let i=1; i <= 15; i++) {
       const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
       promises.push(fetch(url).then((response) => response.json()));
     }
@@ -42,6 +42,7 @@ export const PokemonList = ({ onLoadPokemonClick }) => {
       .then((data) => {
         setPokemons(data);
         setLoading(false);
+        setnameData(data.name);
       })
       .catch((error) => {
         console.log(error);
@@ -55,7 +56,6 @@ export const PokemonList = ({ onLoadPokemonClick }) => {
 
   return (
     <div>
-      <button onClick={onLoadPokemonClick}>Carregar Pokémon</button>
       {loading ? (
         <p>Carregando...</p>
       ) : (
@@ -63,9 +63,9 @@ export const PokemonList = ({ onLoadPokemonClick }) => {
           {pokemons.map((pokemon) => (
             <span key={pokemon.id}>
               <img className="sPokeImg" src={(pokemon.sprites.other['official-artwork'].front_default)}  alt="Imagem do Pokémon"></img>
-              <p className="sPokeNumber">{pokemon.id}  </p>
-              <p className="PokeName"> {pokemon.name}</p>
-              <div className="sPoketypes">
+              <p className="sPokeNumber">N° {pokemon.id}  </p>
+              <p className="sPokeName">{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</p>
+              <div className="sPokeTypes">
               {
                 pokemon.types.map((typeData)=> (
                   <span
@@ -78,9 +78,12 @@ export const PokemonList = ({ onLoadPokemonClick }) => {
               }
               </div>
             </span>
+            
           ))}
         </div>
       )}
+        <button onClick={onLoadPokemonClick}>Carregar Pokémon</button>
     </div>
+    
   );
 };

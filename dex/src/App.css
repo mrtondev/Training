@@ -101,12 +101,12 @@
 
 
 .pokedexBG{
-  display: grid;
+  display: inline-block;
   width: 70%;
   height: 60vh;
   background-color: #FFFAFA;
-  margin-left: auto;
-  margin-right: auto; 
+  margin-left: 5vw;
+ 
 }
 
 .random{
@@ -140,20 +140,20 @@
 }
 
 
-.CardPoke p{
+.CardPoke {
   margin-left: 5px;
   font: inherit;
   position: relative;
 }
 
-.sPokeNumber p{
+.sPokeNumber {
   margin-left: 10px;
   font-size: 15px;
   color: #636262;
   font-weight: bold; 
 }
 
-.PokeName p{
+.sPokeName {
   margin-left: 10px;
   font-weight: bold; 
 }

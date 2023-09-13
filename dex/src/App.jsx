@@ -1,9 +1,8 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 import './App.css';
 import './index.css';
-import './Number';
 import { PokemonList } from "./Number";
-// Mapeamento de tipos em inglês para português
+
 const typeTranslations = {
   normal: 'Normal',
   fighting: 'Lutador',
@@ -23,24 +22,24 @@ const typeTranslations = {
   steel: 'Aço',
   grass: 'Planta',
   fairy: 'Fada',
-
 };
 
 const App = () => {
-  
-
   const [card, setCard] = useState(null);
   const [pName, setpName] = useState('');
   const [namedata, setnameData] = useState(null);
   const [iddata, setiddata] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
+  const [showPokemonList, setShowPokemonList] = useState(true);
+
+
 
   const change = (event) => {
     setpName(event.target.value);
   }
 
   const baseurl = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     const lowercaseName = pName.toLowerCase();
     const Url = `https://pokeapi.co/api/v2/pokemon/${lowercaseName}`;
@@ -57,15 +56,16 @@ const App = () => {
       .catch((error) => {
         console.log(error);
       });
-  }
-
-  // Função para gerar um número aleatório entre 1 e 898 (ou o número total de Pokémon disponíveis)
+  };
   const getRandomPokemonId = () => {
     return Math.floor(Math.random() * 898) + 1;
   };
 
-  // Função para buscar um Pokémon aleatório
+  
+
   const getRandomPokemon = () => {
+    setCard(null);  // Limpar o estado do card
+    setShowPokemonList(false); // Ocultar o PokemonList
     const randomId = getRandomPokemonId();
     const randomUrl = `https://pokeapi.co/api/v2/pokemon/${randomId}`;
 
@@ -76,6 +76,7 @@ const App = () => {
         setnameData(data.name);
         setiddata(data.id);
         setImageUrl(data.sprites.other['official-artwork'].front_default);
+        setShowPokemonList(false); // Quando o formulário é enviado, ocultamos o PokemonList
       })
       .catch((error) => {
         console.log(error);
@@ -88,7 +89,13 @@ const App = () => {
         <div className='container'>
           <div className='title'><h2> Pokédex </h2></div>
           <div className='searchBar'>
-            <form onSubmit={baseurl}>
+            <form onSubmit={(event) => {
+              event.preventDefault();
+              baseurl(event);
+              if (!pName) {
+                setShowPokemonList(true); // Se o campo estiver vazio, mostramos o PokemonList
+              }
+            }}>
               <h2>Nome ou número</h2>
               <input type='text' value={pName} onChange={change}></input>
               <button onClick={baseurl}> <img className='lupa' alt='pesquisa' src={require('./lupa.svg').default} /></button>
@@ -96,19 +103,13 @@ const App = () => {
           </div>
           <div className='grayBar'></div>
           <div className='pokedexBG'>
-
-          <button className="random" onClick={getRandomPokemon}> <img src={require('./refresh.png')} alt="" />Surpreenda-me!</button>
-           <PokemonList
-              card={card}
-              namedata={namedata}
-              iddata={iddata}
-              imageUrl={imageUrl}
-              typeTranslations={typeTranslations} // Passe typeTranslations como prop
-          />
-            {card && (
-              <div className="CardPoke"
-              >
-                  
+            <button className="random" onClick={getRandomPokemon}> <img src={require('./refresh.png')} alt="" />Surpreenda-me!</button>
+            {showPokemonList && pName === '' && (
+              <PokemonList />
+            )}
+            
+            {card ? (
+              <div className="CardPoke">
                 <img className="sPokeImg" src={imageUrl} alt="Imagem do Pokémon" />
                 <div className="sPokeNumber" > <p> N° {iddata}</p></div>
                 <div className="sPokeName" >
@@ -124,16 +125,13 @@ const App = () => {
                         {typeTranslations[typeData.type.name]}
                       </span>
                     ))
-                  ) : (
-                    <p>Nenhum tipo disponível</p>
-                  )}
+                  ) : null}
                 </div>
               </div>
-            )}
+            ) : null}
           </div>
         </div>
       </main>
-      
     </div>
   );
 }
